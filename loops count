@@ -1,0 +1,65 @@
+def show_menu():
+    print("\nPlease choose an option:")
+    print("1. Starter")
+    print("2. Main Course")
+    print("3. Dessert")
+    print("4. Bill")
+
+def main():
+    total_order = []  # List to store the items selected by the customer
+    menu = {
+        'starter': ['Soup', 'Salad', 'Bruschetta'],
+        'main_course': ['Pizza', 'Pasta', 'Burger'],
+        'dessert': ['Ice Cream', 'Cake', 'Pudding']
+    }
+    
+    while True:
+        show_menu()  # Show the menu
+        choice = input("Enter your choice (1-4): ")
+
+        if choice == '1':  # Starter
+            print("Available starters:")
+            for idx, item in enumerate(menu['starter'], 1):
+                print(f"{idx}. {item}")
+            starter_choice = int(input("Select your starter (1-3): "))
+            if 1 <= starter_choice <= 3:
+                total_order.append(menu['starter'][starter_choice - 1])
+            else:
+                print("Invalid choice, please select a valid starter.")
+        
+        elif choice == '2':  # Main Course
+            print("Available main courses:")
+            for idx, item in enumerate(menu['main_course'], 1):
+                print(f"{idx}. {item}")
+            main_course_choice = int(input("Select your main course (1-3): "))
+            if 1 <= main_course_choice <= 3:
+                total_order.append(menu['main_course'][main_course_choice - 1])
+            else:
+                print("Invalid choice, please select a valid main course.")
+        
+        elif choice == '3':  # Dessert
+            print("Available desserts:")
+            for idx, item in enumerate(menu['dessert'], 1):
+                print(f"{idx}. {item}")
+            dessert_choice = int(input("Select your dessert (1-3): "))
+            if 1 <= dessert_choice <= 3:
+                total_order.append(menu['dessert'][dessert_choice - 1])
+            else:
+                print("Invalid choice, please select a valid dessert.")
+        
+        elif choice == '4':  # Bill
+            print("\nYour order summary:")
+            if total_order:
+                for item in total_order:
+                    print(f"- {item}")
+                print(f"Total items: {len(total_order)}")
+            else:
+                print("No items selected.")
+            print("\nThank you for visiting. Have a great day!")
+            break  # Exit the loop after showing the bill
+        
+        else:
+            print("Invalid choice! Please select a valid option (1-4).")
+
+if __name__ == "__main__":
+    main()
